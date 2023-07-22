@@ -21,24 +21,24 @@ const HomeScreen = () => {
       <Button
         title="Apply now!"
         onPress={() => {
-          // Handle apply button press here
+          useNavigation.navigate('Form1')
         }}
         style={styles.applicationButton}
       />
 
       <View style={styles.bottomBar}>
         <ImageButton
-          source={require('./path/to/home_icon.png')}
+          source={require('../assets/home_icon.png')}
           style={styles.imageButton}
           accessibilityLabel="Home"
         />
 
         <ImageButton
-          source={require('./path/to/account_icon.png')}
+          source={require('../assets/account_icon.png')}
           style={styles.imageButton}
           accessibilityLabel="Account"
           onPress={() => {
-            // Handle account button press here
+            NavigationPreloadManager.navigate('Profile')
           }}
         />
       </View>

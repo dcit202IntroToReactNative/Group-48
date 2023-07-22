@@ -1,3 +1,4 @@
+import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import { View, Text, Button, StyleSheet } from 'react-native';
 
@@ -9,7 +10,7 @@ const WelcomeScreen = () => {
       <Button
         title="Login"
         onPress={() => {
-          // Handle login button press here
+          useNavigation.navigate('Login')
         }}
         style={styles.loginButton}
       />

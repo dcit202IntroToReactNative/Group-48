@@ -11,7 +11,7 @@ const ProfileScreen = () => {
           <View style={styles.cardContent}>
             <Image
               style={styles.cardIcon}
-              source={require('./path/to/baseline_receipt_24.png')}
+              source={require('../assets/baseline_receipt_24.png')}
             />
             <Text style={styles.cardText}>My Bill</Text>
           </View>
@@ -21,7 +21,7 @@ const ProfileScreen = () => {
           <View style={styles.cardContent}>
             <Image
               style={styles.cardIcon}
-              source={require('./path/to/baseline_security_24.png')}
+              source={require('../assets/baseline_security_24.png')}
             />
             <Text style={styles.cardText}>Security</Text>
           </View>
@@ -31,7 +31,7 @@ const ProfileScreen = () => {
           <View style={styles.cardContent}>
             <Image
               style={styles.cardIcon}
-              source={require('./path/to/baseline_question_answer_24.png')}
+              source={require('../assets/baseline_question_answer_24.png')}
             />
             <Text style={styles.cardText}>FAQ</Text>
           </View>
@@ -41,7 +41,7 @@ const ProfileScreen = () => {
           <View style={styles.cardContent}>
             <Image
               style={styles.cardIcon}
-              source={require('./path/to/baseline_contact_support_24.png')}
+              source={require('../assets/baseline_contact_support_24.png')}
             />
             <Text style={styles.cardText}>Contact Us</Text>
           </View>
@@ -51,7 +51,7 @@ const ProfileScreen = () => {
           <View style={styles.cardContent}>
             <Image
               style={styles.cardIcon}
-              source={require('./path/to/baseline_logout_24.png')}
+              source={require('../assets/baseline_logout_24.png')}
             />
             <Text style={styles.cardText}>Log Out</Text>
           </View>

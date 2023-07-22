@@ -28,7 +28,7 @@ const RegisterScreen = () => {
       <Button
         title="Login"
         onPress={() => {
-          // Handle login button press here
+          useNavigation.navigate('Home')
         }}
         style={styles.loginButton}
       />
