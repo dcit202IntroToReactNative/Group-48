@@ -21,6 +21,6 @@ export default function App() {
         <Stack.Screen name="Profile" component={ProfileScreen} />
         <Stack.Screen name="Form" component={FormScreen} />
       </Stack.Navigator>
-    </NavigationContaine>
+    </NavigationContainer>
   );
 }
