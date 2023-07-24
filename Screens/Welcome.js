@@ -1,24 +1,31 @@
 import { useNavigation } from '@react-navigation/native';
 import React from 'react';
-import { View, Text, Button, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import BackgroundImage from '../Components/Background';
 
 const WelcomeScreen = () => {
+  const navigation = useNavigation();
   return (
-    <View style={styles.container}>
-      <Text style={styles.welcomeText}>Welcome to our CediLoan!</Text>
+    <BackgroundImage source={require('../assets/loan_img.jpg')}>
+      <View style={styles.container}>    
+        <Text style={styles.welcomeText}>Welcome to CediLoan!</Text>
 
-      <Button
-        title="Login"
-        onPress={() => {
-          useNavigation.navigate('Login')
-        }}
-        style={styles.loginButton}
-      />
+        <TouchableOpacity
+          onPress={() => {
+            navigation.navigate('Login');
+          }}
+          style={styles.loginButton}
+        >
+          <Text style={styles.buttonText}>Login</Text>
+        </TouchableOpacity>
 
-      <View style={styles.registerContainer}>
-        <Text style={styles.registerText}>Don't have an account? Register now!</Text>
+        <View style={styles.registerContainer}>
+          <TouchableOpacity onPress={() => navigation.navigate('Register')}>
+            <Text style={styles.registerText}>Don't have an account? <Text style={{ color: 'navy' }}>Register now!</Text></Text>
+          </TouchableOpacity>
+        </View>
       </View>
-    </View>
+    </BackgroundImage>      
   );
 };
 
@@ -27,7 +34,6 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF', // Replace with your desired background image or color
   },
   welcomeText: {
     marginBottom: 20,
@@ -36,12 +42,15 @@ const styles = StyleSheet.create({
     color: 'black',
   },
   loginButton: {
-    width: 320,
-    marginTop: 20,
-    marginBottom: 5,
-    fontSize: 35,
+    width: 320, // Customize the width as per your requirement
+    paddingVertical: 10,
     backgroundColor: 'navy',
+    borderRadius: 8,
+  },
+  buttonText: {
+    fontSize: 20,
     color: 'white',
+    textAlign: 'center',
   },
   registerContainer: {
     flexDirection: 'row',
