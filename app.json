@@ -15,7 +15,7 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTable": true
     },
     "android": {
       "adaptiveIcon": {
