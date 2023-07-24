@@ -17,7 +17,7 @@ const HomeScreen = () => {
         <View style={styles.secondLayout}>
             <View style={styles.textContainer}>
             <Text style={styles.whiteText}>Maximum loan limit</Text>
-            <Text style={styles.whiteText}>GH₵ 6,000s</Text>
+            <Text style={styles.whiteText}>GH₵ 6,000</Text>
             </View>
 
             <View style={styles.textContainer}>
