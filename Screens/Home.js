@@ -12,6 +12,7 @@ const HomeScreen = () => {
       end={{ x: 1, y: 1 }}
       colors={['Royal_blue', 'Sky_blue']}
       style={{flex: 1}}
+
     >
         <View style={styles.container}>
         <View style={styles.secondLayout}>
@@ -28,7 +29,7 @@ const HomeScreen = () => {
 
         <Text style={styles.reviewStatusText} />
 
-        <TouchableOpacity style={styles.applicationBtn}  onPress={() => {navigation.navigate('Form')}}>
+        <TouchableOpacity style={styles.applicationBtn}>
             <Text style={styles.whiteText}>Apply now!</Text>
         </TouchableOpacity>
 
@@ -71,7 +72,7 @@ const styles = StyleSheet.create({
   reviewStatusText: {
     width: 380,
     margin: 15,
-    marginTop: 20,
+    marginTop: 15,
     fontSize: 15,
     color: '#fff',
     fontWeight: 'bold',
