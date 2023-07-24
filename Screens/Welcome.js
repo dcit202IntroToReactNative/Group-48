@@ -20,9 +20,8 @@ const WelcomeScreen = () => {
         </TouchableOpacity>
 
         <View style={styles.registerContainer}>
-          <TouchableOpacity onPress={() => navigation.navigate('Register')}>
-            <Text style={styles.registerText}>Don't have an account? <Text style={{ color: 'navy' }}>Register now!</Text></Text>
-          </TouchableOpacity>
+            <Text style={styles.registerText}>Don't have an account? <TouchableOpacity onPress={() => navigation.navigate('Register')}><Text style={{ color: 'navy', fontSize: 20}}>Register now!</Text></TouchableOpacity></Text>
+          
         </View>
       </View>
     </BackgroundImage>      
@@ -42,7 +41,7 @@ const styles = StyleSheet.create({
     color: 'black',
   },
   loginButton: {
-    width: 320, // Customize the width as per your requirement
+    width: 320,
     paddingVertical: 10,
     backgroundColor: 'navy',
     borderRadius: 8,

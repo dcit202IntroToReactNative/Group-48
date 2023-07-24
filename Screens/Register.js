@@ -1,50 +1,114 @@
-import React from 'react';
-import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
+import React, {useState} from 'react';
+import { View, Text, TextInput, Button, TouchableOpacity, StyleSheet, ImageBackground, Dimensions, ToastAndroid} from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import { Ionicons } from '@expo/vector-icons';
+
+const { width, height } = Dimensions.get('window');
 
 const RegisterScreen = () => {
+  const [showPassword, setShowPassword] = useState(true);
+  const handleResend = () => {
+    ToastAndroid.show('Sent', ToastAndroid.SHORT);
+  };
+  const navigation = useNavigation();
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
+
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Login</Text>
+    <ImageBackground source={require('../assets/loan_img.jpg')} style={{ ...styles.backgroundImage, width, height }}>
+      <View style={styles.container}>
+        <Text style={styles.headingText}>Create Account</Text>
 
-      <View style={styles.inputContainer}>
-        <TextInput
-          style={styles.textInput}
-          placeholder="Phone number"
-          keyboardType="numeric"
-        />
+        {/* Phone Number Input */}
+        <View style={styles.inputContainer}>
+          <Ionicons name="call-outline" size={20} color="black" style={styles.icon} />
+          <TextInput
+            style={styles.input}
+            placeholder="Phone number"
+            keyboardType="numeric"
+          />
+        </View>
+
+        {/* Create Password Input */}
+        <View style={styles.inputContainer}>
+          <Ionicons name="lock-closed-outline" size={20} color="black" style={styles.icon} />
+          <TextInput
+            style={styles.input}
+            placeholder="Create password"
+            secureTextEntry={true}
+            maxLength={4}
+          />
+          <TouchableOpacity onPress={togglePasswordVisibility} style={styles.toggleButton}>
+            <Ionicons
+              name={showPassword ? 'eye-outline' : 'eye-off-outline'}
+              size={24}
+              color="black"
+            />
+          </TouchableOpacity>
+        </View>
+
+        {/* Confirm Password Input */}
+        <View style={styles.inputContainer}>
+          <Ionicons name="lock-closed-outline" size={20} color="black" style={styles.icon} />
+          <TextInput
+            style={styles.input}
+            placeholder="Confirm password"
+            secureTextEntry={true}
+            maxLength={4}
+          />
+          <TouchableOpacity onPress={togglePasswordVisibility} style={styles.toggleButton}>
+            <Ionicons
+              name={showPassword ? 'eye-outline' : 'eye-off-outline'}
+              size={24}
+              color="black"
+            />
+          </TouchableOpacity>
+        </View>
+
+        <View style={styles.otpContainer}>
+          <TextInput
+            style={styles.otpInput}
+            placeholder="Get OTP"
+            keyboardType="numeric"
+            secureTextEntry={true}
+          />
+
+          <TouchableOpacity style={styles.sendButton}>
+            <Text style={styles.sendButtonText}>Send</Text>
+          </TouchableOpacity>
+        </View>
+
+        <TouchableOpacity style={styles.resendContainer} onPress={handleResend}>
+          <Text style={styles.resendText}>Did not receive code? <Text style={{color: 'Navy'}}>Resend</Text></Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          style={styles.registerButton}
+          onPress={() => {
+              navigation.navigate('Home');
+          }}>
+          <Text style={styles.registerButtonText}>Register</Text>
+        </TouchableOpacity>
       </View>
-
-      <View style={styles.inputContainer}>
-        <TextInput
-          style={styles.textInput}
-          placeholder="Create password"
-          secureTextEntry={true}
-          maxLength={4}
-        />
-      </View>
-
-      <Text style={styles.forgotPassword}>Forgot password?</Text>
-
-      <Button
-        title="Login"
-        onPress={() => {
-          useNavigation.navigate('Home')
-        }}
-        style={styles.loginButton}
-      />
-    </View>
+    </ImageBackground>
   );
 };
 
 const styles = StyleSheet.create({
+  backgroundImage: {
+    flex: 1,
+    resizeMode: 'cover',
+  },
   container: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
     padding: 16,
-    backgroundColor: '#fff', // Replace with your desired background image or color
+    backgroundColor: 'transparent',
   },
-  title: {
+  headingText: {
     fontSize: 50,
     fontWeight: 'bold',
     color: 'black',
@@ -52,26 +116,68 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   inputContainer: {
-    width: '100%',
+    flexDirection: 'row',
+    alignItems: 'center',
     marginBottom: 10,
-  },
-  textInput: {
-    height: 40,
-    borderWidth: 1,
-    borderColor: '#ccc',
-    borderRadius: 5,
+    backgroundColor: '#F0F0F0',
+    borderRadius: 8,
     paddingHorizontal: 10,
   },
-  forgotPassword: {
-    marginLeft: 130,
+  icon: {
+    marginRight: 10,
+  },
+  input: {
+    width: '100%',
+    height: 50,
+    backgroundColor: '#F0F0F0',
+    marginBottom: 10,
+    paddingHorizontal: 10,
+    borderRadius: 8,
+  },
+  otpContainer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 10,
+  },
+  otpInput: {
+    width: 290,
+    height: 50,
+    backgroundColor: '#F0F0F0',
+    marginRight: 5,
+    paddingHorizontal: 10,
+    borderRadius: 8,
+  },
+  sendButton: {
+    backgroundColor: '#4169E1',
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    borderRadius: 8,
+  },
+  sendButtonText: {
+    color: 'white',
+    fontSize: 16,
+  },
+  resendContainer: {
+    alignItems: 'flex-start',
+    marginBottom: 10,
+    marginLeft: 80,
+  },
+  resendText: {
     color: 'black',
   },
-  loginButton: {
+  registerButton: {
     width: 300,
-    marginTop: 20,
-    fontSize: 25,
+    height: 50,
+    backgroundColor: '#000080',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 8,
+    marginTop: 10,
+  },
+  registerButtonText: {
     color: 'white',
-    backgroundColor: 'navy',
+    fontSize: 25,
   },
 });
 
