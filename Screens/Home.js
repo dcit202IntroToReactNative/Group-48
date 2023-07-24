@@ -28,7 +28,7 @@ const HomeScreen = () => {
 
         <Text style={styles.reviewStatusText} />
 
-        <TouchableOpacity style={styles.applicationBtn}>
+        <TouchableOpacity style={styles.applicationBtn}  onPress={() => {navigation.navigate('Form')}}>
             <Text style={styles.whiteText}>Apply now!</Text>
         </TouchableOpacity>
 
